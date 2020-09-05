@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Article - MDBlog</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+</head>
+<body>
+    <nav class="uk-navbar-container uk-margin" style="margin-bottom: 0" uk-navbar="mode: click">
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="/">MDBlog</a></li>
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li> <a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div uk-grid>
+        <div class="uk-width-1-4@s">
+            <div class="uk-card uk-card-body uk-padding">
+                <ul class="uk-nav">
+                    <li><a href="/admin/home" class="uk-button uk-button-secondary">Back</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="uk-width-3-4@s">
+            <div class="uk-card uk-card-body">
+                <% if(typeof success !== 'undefined' && success === false) { %>
+                    <div class="uk-alert-danger" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p><%= message %></p>
+                    </div>
+                <% } %>
+                <% if(typeof success !== 'undefined' && success === true) { %>
+                    <div class="uk-alert-success" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p><%= message %></p>
+                    </div>
+                <% } %>
+                <form action="<%= article.id %>" method="POST">
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Title</label>
+                        <input type="text" class="uk-input" name="title" value="<%= article.title %>">
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Content (Use Markdown)</label>
+                        <textarea name="content" rows="15" class="uk-textarea"><%= article.content %></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-secondary">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>

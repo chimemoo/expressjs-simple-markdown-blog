@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= article.title %> | MDBlog</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+</head>
+<body>
+    <div class="uk-position-relative">
+        <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" uk-parallax="bgy: -200" style="background-image: url('../src/background.jpg');">
+
+            <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="y: 100,0"><%= article.title %></h1>
+        
+        </div>
+        <div class="uk-position-top">
+            <div class="uk-section-transparent uk-preserve-color">
+                <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark; top: 200">
+                    <nav class="uk-navbar-container" uk-navbar>
+                        <div class="uk-navbar-left">
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="/">MDBlog</a></li>
+                                <li><a href="#">About</a></li>
+                                <li>
+                                    <a href="#">Category</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="#">Item</a></li>
+                                            <li><a href="#">Item</a></li>
+                                            <li><a href="#">Item</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <div class="uk-navbar-nav">
+                                <% if(isAuthenticated) { %>
+                                    <li> <a href="/admin/home">Dashboard</a></li>
+                                <% } else { %>
+                                    <li> <a href="/register">Register</a></li>
+                                    <li> <a href="/login">Login</a></li>
+                                <% } %>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="uk-container uk-container-xsmall uk-padding">
+        <%- article.contentSanitize %>
+    </div>
+    
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
