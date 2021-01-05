@@ -1,6 +1,6 @@
 # Simple Markdown Blog
 
-This is simple markdown blog usign ExpressJs.
+This is simple markdown blog using Express Js.
 
 ## How to Use
 1. Fork this repository using git clone https://github.com/chimemoo/expressjs-simple-markdown-blog.git
